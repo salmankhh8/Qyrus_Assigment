@@ -2,7 +2,7 @@ import chainlit as cl
 import requests
 import io
 
-BACKEND_URL = "http://localhost:8000/upload/"  # Ensure this matches your FastAPI backend
+BACKEND_URL = "http://localhost:8000/upload/"
 
 @cl.on_message
 async def handle_message(message: cl.Message):
