@@ -9,7 +9,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 openai.api_key = OPENAI_API_KEY
 
 class AIInterpreter:
-    """Handles OpenAI API calls to generate Python code."""
     def __init__(self, api_key: str):
         self.api_key = api_key
         openai.api_key = api_key
@@ -18,7 +17,7 @@ class AIInterpreter:
         prompt = f"""
         You are a Python expert. Write a Python script to analyze the following CSV data:
         ```
-        {file_content[:1000]}  # Sending a larger preview with a higher token model
+        {file_content[:1000]}
         ```
         The user wants: "{user_message}". Ensure the code reads the CSV data and performs the requested action.
         Output results using print(). Use pandas, numpy, and matplotlib if needed.
@@ -33,7 +32,7 @@ class AIInterpreter:
         return response["choices"][0]["message"]["content"].strip()
 
 class CodeExecutor:
-    """Executes AI-generated Python code in a controlled environment."""
+   
     @staticmethod
     def execute_code(code: str, file_content: str) -> str:
         local_scope = {}
